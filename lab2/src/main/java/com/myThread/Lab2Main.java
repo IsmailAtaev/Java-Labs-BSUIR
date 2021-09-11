@@ -3,72 +3,28 @@ package com.myThread;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Lab2Main {
-    public static void main(String[] args) {
-       GlwThread thread = new GlwThread();
-       thread.start();
-    }
-}
 
-class GlwThread extends Thread {
-    int cargo = 10;
-    MyThread myThread1;
-    MyThread myThread2;
-    MyThread myThread3;
-    List list = Collections.synchronizedList(new ArrayList<>());
 
-    public GlwThread() {
-        this.myThread1 = new MyThread("one");
-        this.myThread2 = new MyThread("two");
-        this.myThread3 = new MyThread("three");
-        list.add(myThread1);
-        list.add(myThread2);
-        list.add(myThread3);
-    }
+    public static void main(String[] args) throws InterruptedException {
 
-    @Override
-    public void run() {
-        while (true) {
-            MyThread myThread;
-            if (cargo > 1) {
+        AtomicInteger ton = new AtomicInteger(86);
+        MyThread thread1 = new MyThread("one", 300, 2, ton);
+        MyThread thread2 = new MyThread("one", 200, 2, ton);
+        MyThread thread3 = new MyThread("one", 100, 2, ton);
 
-                myThread = (MyThread) list.get(0);
-                list.remove(0);
-                sleeping(); // выгрузка товара 3 секунды
-                cargo -= myThread.getVolumeCargo();
-                myThread.start();
-                try {
-                    myThread.join();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-               /* sleeping();
-                cargo -= myThread1.getVolumeCargo();
-                System.out.println(" i am cargo = " + cargo);
+        thread1.start();
+        thread2.start();
+        thread3.start();
 
-                sleeping();
-                cargo -= myThread2.getVolumeCargo();
-                System.out.println(" i am cargo = " + cargo);
+        thread1.join();
+        thread2.join();
+        thread3.join();
 
-                sleeping();
-                cargo -= myThread3.getVolumeCargo();
-                System.out.println(" i am cargo = " + cargo);*/
-
-            } else {
-                break;
-            }
-            list.add(myThread);
-        }
+        System.out.println("count ton = " + ton);
+        System.out.println(thread1.ton);
 
     }
-
-    private void sleeping() {
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
 }

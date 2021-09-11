@@ -5,6 +5,8 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * @author Ataev Ismayyl
  * @implNote Runnable
@@ -18,53 +20,35 @@ import org.apache.logging.log4j.LogManager;
 public class MyThread extends Thread {
     private final Logger logger = LogManager.getLogger(MyThread.class.getName());
     private int countFlight = 0;
-    private int timeFlight = 3000; // millisecond
-    private int volumeCargo = 2;
+    private int timeFlight = 0; // millisecond
+    private int volumeCargo = 0;
+    public AtomicInteger ton;
     public Thread thread;
 
-    public MyThread(String name) {
+    public MyThread(String name,int timeFlight, int volumeCargo,AtomicInteger ton) {
         thread = new Thread(name);
+        this.timeFlight = timeFlight;
+        this.volumeCargo = volumeCargo;
+        this.ton = ton;
     }
+
 
     @Override
     public void run() {
-        this.timeZoneCargo();
-        this.countFlight++;
-    }
+        while (true) {
 
-    private synchronized void timeZoneCargo() {
-        try {
-            System.out.println("i sleep 3 second\nthread name =  " + thread.getName());
-            this.thread.sleep(timeFlight);
-            System.out.println("i am ready thread " + thread.getName());
-        } catch (InterruptedException e) {
-            logger.log(Level.ERROR, e.getMessage());
+
+            this.ton.addAndGet(-volumeCargo);
+
+
+            try {
+                Thread.sleep(timeFlight);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            this.countFlight++;
+
         }
+       // System.out.println("count of race " + this.countFlight);
     }
-
-    public int getCountFlight() {
-        return countFlight;
-    }
-
-    public void setCountFlight(int countFlight) {
-        this.countFlight = countFlight;
-    }
-
-    public int getTimeFlight() {
-        return timeFlight;
-    }
-
-    public void setTimeFlight(int timeFlight) {
-        this.timeFlight = timeFlight;
-    }
-
-    public int getVolumeCargo() {
-        return volumeCargo;
-    }
-
-    public void setVolumeCargo(int volumeCargo) {
-        this.volumeCargo = volumeCargo;
-    }
-
-
 }
