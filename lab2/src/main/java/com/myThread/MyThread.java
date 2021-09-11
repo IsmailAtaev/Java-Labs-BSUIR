@@ -15,15 +15,15 @@ import org.apache.logging.log4j.LogManager;
  *
  * */
 
-public class MyThread implements Runnable {
+public class MyThread extends Thread {
     private final Logger logger = LogManager.getLogger(MyThread.class.getName());
     private int countFlight = 0;
-    private int timeFlight = 0; // millisecond
-    private double volumeCargo = 0;
-    private Thread thread;
+    private int timeFlight = 3000; // millisecond
+    private int volumeCargo = 2;
+    public Thread thread;
 
-    {
-        thread = new Thread();
+    public MyThread(String name) {
+        thread = new Thread(name);
     }
 
     @Override
@@ -32,11 +32,39 @@ public class MyThread implements Runnable {
         this.countFlight++;
     }
 
-    private void timeZoneCargo(){
+    private synchronized void timeZoneCargo() {
         try {
+            System.out.println("i sleep 3 second\nthread name =  " + thread.getName());
             this.thread.sleep(timeFlight);
+            System.out.println("i am ready thread " + thread.getName());
         } catch (InterruptedException e) {
             logger.log(Level.ERROR, e.getMessage());
         }
     }
+
+    public int getCountFlight() {
+        return countFlight;
+    }
+
+    public void setCountFlight(int countFlight) {
+        this.countFlight = countFlight;
+    }
+
+    public int getTimeFlight() {
+        return timeFlight;
+    }
+
+    public void setTimeFlight(int timeFlight) {
+        this.timeFlight = timeFlight;
+    }
+
+    public int getVolumeCargo() {
+        return volumeCargo;
+    }
+
+    public void setVolumeCargo(int volumeCargo) {
+        this.volumeCargo = volumeCargo;
+    }
+
+
 }

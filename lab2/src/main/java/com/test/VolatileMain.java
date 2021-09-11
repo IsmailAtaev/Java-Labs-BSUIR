@@ -1,11 +1,18 @@
 package com.test;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class VolatileMain {
      volatile static int i =0;
 
     public static void main(String[] args) {
-        new MyThreadRead().start();
-        new MyThreadWrite().start();
+
+        List list = Collections.synchronizedList(new ArrayList<>());
+
+        // new MyThreadRead().start();
+       // new MyThreadWrite().start();
     }
 
     static class MyThreadWrite extends Thread {
