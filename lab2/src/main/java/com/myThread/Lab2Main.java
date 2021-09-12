@@ -7,8 +7,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Lab2Main {
 
-
-
     public static void main(String[] args) throws InterruptedException {
 
         MyThread.ton = 10;

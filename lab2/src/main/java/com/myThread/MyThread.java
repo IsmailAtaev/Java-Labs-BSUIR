@@ -22,11 +22,11 @@ public class MyThread extends Thread {
     private int countFlight = 0;
     private int timeFlight = 0; // millisecond
     private int volumeCargo = 0;
-     public static int ton;
+    public static int ton;
     public Thread thread;
     private Object locker;
 
-    public MyThread(String name, int timeFlight, int volumeCargo,Object locker) {
+    public MyThread(String name, int timeFlight, int volumeCargo, Object locker) {
         thread = new Thread(name);
         this.timeFlight = timeFlight;
         this.volumeCargo = volumeCargo;
@@ -38,31 +38,35 @@ public class MyThread extends Thread {
     public void run() {
         this.sleeping();
         System.out.println("Count of race = " + this.countFlight + " Thread --> " + thread.getName());
-        System.out.println("----------------------------" );
+        System.out.println("----------------------------");
     }
 
-    private  void sleeping()  {
+    private void sleeping() {
+
         while (true) {
+
             synchronized (locker) {
-                if (ton > 1) {
+
+                if (ton > 1)
                     this.ton -= volumeCargo;
-                }else {
+                else
                     break;
-                }
+
+
                 try {
                     Thread.sleep(300);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    logger.log(Level.ERROR.ERROR, e.getMessage());
                 }
+
             }
 
             try {
                 Thread.sleep(timeFlight);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                logger.log(Level.ERROR.ERROR, e.getMessage());
             }
             this.countFlight++;
-            System.out.println();
         }
     }
 }
