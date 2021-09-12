@@ -22,14 +22,16 @@ public class MyThread extends Thread {
     private int countFlight = 0;
     private int timeFlight = 0; // millisecond
     private int volumeCargo = 0;
-    volatile static Integer ton;
+     public static int ton;
     public Thread thread;
+    private Object locker;
 
-    public MyThread(String name, int timeFlight, int volumeCargo, Integer ton) {
+    public MyThread(String name, int timeFlight, int volumeCargo,Object locker) {
         thread = new Thread(name);
         this.timeFlight = timeFlight;
         this.volumeCargo = volumeCargo;
-        this.ton = ton;
+        this.locker = locker;
+
     }
 
     @Override
@@ -39,22 +41,27 @@ public class MyThread extends Thread {
         System.out.println("----------------------------" );
     }
 
-    private synchronized void sleeping(){
-        while (ton > 1) {
-            System.out.println("Thread = " + this.thread.getName()+ " start ");
-            System.out.println("Ton after = " + this.ton);
-            //this.ton.addAndGet(-volumeCargo);
-            synchronized (this) {
-
-                this.ton -= volumeCargo;
+    private  void sleeping()  {
+        while (true) {
+            synchronized (locker) {
+                if (ton > 1) {
+                    this.ton -= volumeCargo;
+                }else {
+                    break;
+                }
+                try {
+                    Thread.sleep(300);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
+
             try {
                 Thread.sleep(timeFlight);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             this.countFlight++;
-            System.out.println("Ton before = " + this.ton + " Thread " + this.thread.getName()+ " finish ");
             System.out.println();
         }
     }
