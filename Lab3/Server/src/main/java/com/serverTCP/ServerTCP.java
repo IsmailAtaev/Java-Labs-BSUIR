@@ -27,6 +27,7 @@ public class ServerTCP {
 
 
                 while (flag) {
+
                     byte[] bytes = new byte[1024];
                     is.read(bytes);
                     String str = new String(bytes, "UTF-8");
