@@ -102,6 +102,7 @@ public class ClientTCP extends Frame implements ActionListener, WindowListener {
 
     @Override
     public void windowActivated(WindowEvent e) {
+
     }
 
     @Override
