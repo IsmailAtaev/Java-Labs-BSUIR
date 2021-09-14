@@ -5,8 +5,18 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**@author Ataew Ismayyl
+ * Лабараторная работа номер два.
+ * */
+
+
+
 public class Lab2Main {
 
+    /**
+     * @param args
+     * @throws  InterruptedException
+     * */
     public static void main(String[] args) throws InterruptedException {
 
         MyThread.ton = 10;
