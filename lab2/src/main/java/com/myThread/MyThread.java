@@ -5,8 +5,6 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 /**
  * @author Ataev Ismayyl
  * @implNote Runnable
@@ -14,6 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 1. счетчик для рейсов
  * 2. грузовместимость потока или грузовика (1,5).(3.4).(5.1)
  * 3. timer for sleep() (30 min, 45 min, 40 min)
+ * лутше былобы добавть класс для ниже перечисленных переменных
  * */
 
 public class MyThread extends Thread {
@@ -47,12 +46,14 @@ public class MyThread extends Thread {
         System.out.println("Start thread --> " + thread.getName());
         while (true) {
             synchronized (locker) {
-                if (ton > 1)
+                if (ton > 0) {
+                    if (ton < volumeCargo) break;
+
                     this.ton -= volumeCargo;
-                else
+                } else
                     break;
-                threadSleep(2000);
-                timeGeneric += 2000;
+                threadSleep(200);
+                timeGeneric += 200;
             }
             threadSleep(timeFlight);
             this.countFlight++;
