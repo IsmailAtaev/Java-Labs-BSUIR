@@ -21,7 +21,7 @@ public class MyThread extends Thread {
     private int countFlight = 0;
     private int timeFlight = 0; // millisecond
     private int volumeCargo = 0;
-    public static int ton;
+    public static int ton; // volatile есть такой ключевое слово для потоков как статик один память для всех потоков
     private static int timeGeneric = 0;
     public Thread thread;
     private Object locker;
