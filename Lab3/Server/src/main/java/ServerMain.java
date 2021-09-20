@@ -51,35 +51,3 @@ public class ServerMain {
         return getStr;
     }
 }
-
-/*
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter port --> ");
-        int port = scanner.nextInt();
-        ServerSocket ss = new ServerSocket(port);
-        Socket s = ss.accept();
-
-        InputStreamReader in = new InputStreamReader(s.getInputStream());
-        BufferedReader bf = new BufferedReader(in);
-
-        System.out.println("client " + bf.readLine());
-
-        String str1 = bf.readLine();
-        String []arrStr = str1.split(" ");
-
-        ArrayList<String> stringArrayList = new ArrayList<>();
-        for (int i = arrStr.length ; i > 0 ; i--){
-            stringArrayList.add(arrStr[i-1]);
-        }
-
-        String getStr = new String();
-        for (int j = 0; j < stringArrayList.size(); j++) {
-            getStr += stringArrayList.get(j) + " ";
-        }
-        System.out.println("getStr " + getStr);
-
-        System.out.println("word " + stringArrayList);
-
-        PrintWriter pr = new PrintWriter(s.getOutputStream());
-        pr.println(getStr);
-        pr.flush();*/
