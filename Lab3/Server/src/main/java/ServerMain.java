@@ -27,6 +27,9 @@ public class ServerMain {
                 PrintWriter pr = new PrintWriter(s.getOutputStream());
                 pr.println(ServerMain.getReverseMessage(bf.readLine()));
                 pr.flush();
+                s.close();
+                bf.close();
+                in.close();
             }
         } catch (IOException ioException) {
             ioException.getStackTrace();

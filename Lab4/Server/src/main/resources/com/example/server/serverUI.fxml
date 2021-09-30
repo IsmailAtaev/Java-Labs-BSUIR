@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="278.0" prefWidth="405.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.server.ServerController">
+   <children>
+      <AnchorPane layoutY="-1.0" prefHeight="87.0" prefWidth="456.0" style="-fx-background-color: #1b1585;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
+         <children>
+            <Line endX="70.39996337890625" layoutX="231.0" layoutY="57.0" startX="-147.1999969482422" stroke="WHITE" AnchorPane.leftAnchor="83.30000305175781" AnchorPane.rightAnchor="103.10003662109375" />
+            <Label layoutX="102.0" layoutY="14.0" prefHeight="34.0" prefWidth="200.0" text="Welcome to server" textFill="WHITE" AnchorPane.leftAnchor="102.0" AnchorPane.rightAnchor="103.0">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Button fx:id="inputPortButton" layoutX="24.0" layoutY="117.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="72.0" style="-fx-background-color: #1b1585;" text="Enter" textFill="WHITE" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="309.0" />
+      <TextField fx:id="port_feild" layoutX="157.0" layoutY="118.0" prefHeight="26.0" prefWidth="237.0" promptText="Port" AnchorPane.rightAnchor="46.400000000000006">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>

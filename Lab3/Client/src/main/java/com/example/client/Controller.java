@@ -62,23 +62,23 @@ public class Controller {
 
 
         sendButton.setOnAction(event -> {
-            try {
-                String str = getWord_field.getText();
+                try {
+                    String str = getWord_field.getText();
 
-                PrintWriter pr = new PrintWriter(this.s.getOutputStream());
-                pr.println(str);
-                pr.flush();
+                    PrintWriter pr = new PrintWriter(this.s.getOutputStream());
+                    pr.println(str);
+                    pr.flush();
 
-                InputStreamReader in = new InputStreamReader(this.s.getInputStream());
-                BufferedReader bf = new BufferedReader(in);
-                String strPut = bf.readLine();
-                putWord_feild.setText(strPut);
+                    InputStreamReader in = new InputStreamReader(this.s.getInputStream());
+                    BufferedReader bf = new BufferedReader(in);
+                    String strPut = bf.readLine();
+                    putWord_feild.setText(strPut);
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (Exception e) {
-                e.getStackTrace();
-            }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (Exception e) {
+                    e.getStackTrace();
+                }
         });
     }
 }
