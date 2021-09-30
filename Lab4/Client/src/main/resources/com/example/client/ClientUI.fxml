@@ -19,7 +19,7 @@
                 </Label>
             </children>
         </AnchorPane>
-        <Button fx:id="connectButton" layoutX="14.0" layoutY="134.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="119.0" style="-fx-background-color: #1b1585;" text="Connect" textFill="WHITE" />
+        <Button fx:id="connectButton" layoutX="14.0" layoutY="134.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="119.0" style="-fx-background-color: #1b1585;" text="Enter" textFill="WHITE" />
         <TextField fx:id="port_feild" layoutX="167.0" layoutY="133.0" prefHeight="26.0" prefWidth="371.0" promptText="Port" />
         <TextField fx:id="a_feild" layoutX="164.0" layoutY="197.0" prefHeight="26.0" prefWidth="110.0" promptText="A" />
         <TextField fx:id="b_feild" layoutX="290.0" layoutY="197.0" prefHeight="26.0" prefWidth="110.0" promptText="B" />

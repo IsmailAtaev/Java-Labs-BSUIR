@@ -26,10 +26,6 @@ public class ClientController {
     @FXML // fx:id="connectButton"
     private Button connectButton; // Value injected by FXMLLoader
 
-    @FXML // fx:id="calculateButton"
-    private Button calculateButton; // Value injected by FXMLLoader
-
-
     @FXML // fx:id="port_feild"
     private TextField port_feild; // Value injected by FXMLLoader
 
@@ -50,14 +46,17 @@ public class ClientController {
         connectButton.setOnAction(actionEvent -> {
             String port = port_feild.getText().trim();
 
-            if ( port.equals("")) {
+            /*if ( port.equals("")) {
                 throw new IllegalArgumentException(" do not enter ipAdress or Port please enter good value");
-            }
-
+            }*/
             try {
+                ConnectDate connectDate = new ConnectDate(ServiceUDP.checkPort(port_feild.getText().trim()));
+                ABCResult abcResult = new ABCResult(Check.checkInt(a_feild.getText()),Check.checkInt(b_feild.getText().trim()),Check.checkInt(c_feild.getText()));
+                ServiceUDP serviceUDP = new ServiceUDP(connectDate,abcResult);
+                serviceUDP.serviceSend();
 
                 ds = new DatagramSocket();
-                InetAddress ip = InetAddress.getLocalHost();
+               /* InetAddress ip = InetAddress.getLocalHost();
                 byte[] sd = new byte[1024];
                 String value = a_feild.getText()+ " ";
                 value += b_feild.getText() + " ";
@@ -65,7 +64,7 @@ public class ClientController {
 
                 sd = value.getBytes();
                 DatagramPacket dp = new DatagramPacket(sd, sd.length, ip, Integer.valueOf(port));
-                ds.send(dp);
+                ds.send(dp);*/
 
 
                 byte[] rd = new byte[1024];
