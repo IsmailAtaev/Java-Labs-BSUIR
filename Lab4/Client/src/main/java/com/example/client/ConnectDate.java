@@ -4,6 +4,11 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Objects;
 
+/**
+ * @author Ataev Ismayyl (issyataew@gmail.com)
+ * class intended save Connect
+ * */
+
 public class ConnectDate {
 
    private int port = 0;
@@ -21,8 +26,6 @@ public class ConnectDate {
       this.port = port;
       this.ip = ip;
    }
-
-
 
    public int getPort() {
       return port;

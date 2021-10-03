@@ -2,7 +2,6 @@ package com.example.client;
 
 import java.io.IOException;
 import java.net.*;
-
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
@@ -10,7 +9,6 @@ import org.apache.logging.log4j.LogManager;
 /**
  * @author Ataev Ismayyl (issyataew@gmail.com)
  */
-
 
 public class ServiceUDP {
 
@@ -36,6 +34,11 @@ public class ServiceUDP {
         this.datagramSocket = new DatagramSocket();
     }
 
+    /**
+     * @throws IllegalArgumentException
+     * @return port
+     * check port
+     * */
     public static int checkPort(String port) {
         if (port.equals("")) {
             throw new IllegalArgumentException("incorrect input port class Connect method checkPort() ");
@@ -51,6 +54,10 @@ public class ServiceUDP {
         datagramSocket.send(dP);
     }
 
+
+    /**
+     * @throws UnknownHostException,IOException
+     * */
     public void serviceSend() {
         try {
 
@@ -70,7 +77,17 @@ public class ServiceUDP {
         }
     }
 
-
+    /**
+     * date processing
+     * @return str(date)
+     * */
+    public String serviceReceive() throws IOException {
+        byte[] rd = new byte[1024];
+        DatagramPacket packet = new DatagramPacket(rd, rd.length);
+        datagramSocket.receive(packet);
+        String str = new String(rd, 0, packet.getLength());
+        return str;
+    }
 
 
 

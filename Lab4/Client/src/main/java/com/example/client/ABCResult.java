@@ -2,6 +2,12 @@ package com.example.client;
 
 import java.util.Objects;
 
+/**
+ * @author Ataev Ismayyl (issyataew@gmail.com)
+ * class intended for sace data
+ * * */
+
+
 public class ABCResult {
 
     private int a;

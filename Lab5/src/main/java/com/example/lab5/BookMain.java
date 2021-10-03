@@ -1,17 +1,18 @@
-package com.example.client;
+package com.example.lab5;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
-public class ClientApplication extends Application {
+public class BookMain extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(ClientApplication.class.getResource("clientUI.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 350);
-        stage.setTitle("Calculate!");
+        FXMLLoader fxmlLoader = new FXMLLoader(BookMain.class.getResource("bookUI.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 496, 557);
+        stage.setTitle("issy!");
         stage.setScene(scene);
         stage.show();
     }
