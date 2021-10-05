@@ -27,6 +27,10 @@ public class Book {
 
     }
 
+    public Book(String authorBook) {
+        this.authorBook = authorBook;
+    }
+
     public String getAuthorBook() {
         return authorBook;
     }

@@ -10,7 +10,7 @@ import com.example.lab5.configs.Const;
 public class DataBaseHandler extends Configs {
     Connection dbConnection;
 
-    public Connection getDbConnection() throws ClassNotFoundException,SQLException {
+    public Connection getDbConnection() throws ClassNotFoundException, SQLException {
         String connectionString = "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName;
         Class.forName("com.mysql.cj.jdbc.Driver");
         dbConnection = DriverManager.getConnection(connectionString, dbUser, dbPass);
@@ -53,7 +53,7 @@ public class DataBaseHandler extends Configs {
                 book1.setYearBook(resSet.getInt(5));
                 book1.setCountPage(resSet.getInt(6));
                 arrayList.add(book1);
-                System.out.println(book1.toString());
+                // System.out.println(book1.toString());
             }
         } catch (SQLException e) {
             e.printStackTrace();
