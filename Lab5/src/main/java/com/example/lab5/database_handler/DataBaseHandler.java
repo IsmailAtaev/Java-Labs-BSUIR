@@ -1,6 +1,7 @@
 package com.example.lab5.database_handler;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import com.example.lab5.book.Book;
 import com.example.lab5.configs.Configs;
@@ -8,6 +9,7 @@ import com.example.lab5.configs.Const;
 
 
 public class DataBaseHandler extends Configs {
+
     Connection dbConnection;
 
     public Connection getDbConnection() throws ClassNotFoundException, SQLException {
@@ -16,6 +18,22 @@ public class DataBaseHandler extends Configs {
         dbConnection = DriverManager.getConnection(connectionString, dbUser, dbPass);
         return dbConnection;
     }
+
+    public void editBookDB(String message,String str,String str1) {
+        try{
+            String update = "UPDATE " + Const.BOOKS_TABLE + " SET " + Const.BOOKS_AUTHOR + "=?, " + Const.BOOKS_NAME + "=? " +" WHERE " + Const.BOOKS_NAME + "=?";
+            PreparedStatement preparedStatement =  getDbConnection().prepareStatement(update);
+
+            preparedStatement.setString(1,message);
+            preparedStatement.setString(2,str1);
+            preparedStatement.setString(3,str);
+            preparedStatement.executeUpdate();
+
+        }catch (SQLException | ClassNotFoundException sqlException){
+
+        }
+    }
+
 
     public void addBookDB(Book book) {
         String insert = "INSERT INTO " + Const.BOOKS_TABLE + "(" +
@@ -53,8 +71,8 @@ public class DataBaseHandler extends Configs {
                 book1.setYearBook(resSet.getInt(5));
                 book1.setCountPage(resSet.getInt(6));
                 arrayList.add(book1);
-                // System.out.println(book1.toString());
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
