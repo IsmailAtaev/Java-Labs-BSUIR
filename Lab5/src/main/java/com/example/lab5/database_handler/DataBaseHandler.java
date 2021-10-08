@@ -19,14 +19,14 @@ public class DataBaseHandler extends Configs {
         return dbConnection;
     }
 
-    public void editBookDB(String message,String str,String str1) {
+    public void editBookDB(String oldNameBook,Book book) {
         try{
             String update = "UPDATE " + Const.BOOKS_TABLE + " SET " + Const.BOOKS_AUTHOR + "=?, " + Const.BOOKS_NAME + "=? " +" WHERE " + Const.BOOKS_NAME + "=?";
             PreparedStatement preparedStatement =  getDbConnection().prepareStatement(update);
 
-            preparedStatement.setString(1,message);
-            preparedStatement.setString(2,str1);
-            preparedStatement.setString(3,str);
+            preparedStatement.setString(1,book.getAuthorBook());
+            preparedStatement.setString(2,book.getNameBook());
+            preparedStatement.setString(3,oldNameBook);
             preparedStatement.executeUpdate();
 
         }catch (SQLException | ClassNotFoundException sqlException){

@@ -99,7 +99,8 @@ public class Book {
                 '}';
     }
 
-
-
-
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return new Book(authorBook, nameBook, language, yearBook, countPage);
+    }
 }

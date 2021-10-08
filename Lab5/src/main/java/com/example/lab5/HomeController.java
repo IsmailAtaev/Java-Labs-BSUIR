@@ -5,6 +5,8 @@ package com.example.lab5;
  */
 
 import java.net.URL;
+import java.security.spec.RSAOtherPrimeInfo;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import com.example.lab5.animations.Shake;
 import com.example.lab5.book.Book;
@@ -100,15 +102,24 @@ public class HomeController {
     @FXML // fx:id="oldBookName_field"
     private TextField oldBookName_field; // Value injected by FXMLLoader
 
+    @FXML // fx:id="newAuthorName_field"
+    private TextField newAuthorName_field; // Value injected by FXMLLoader
+
     @FXML // fx:id="newBookName_field"
     private TextField newBookName_field; // Value injected by FXMLLoader
 
-    @FXML // fx:id="newBookName_field"
-    private TextField newAuthorName_field; // Value injected by FXMLLoader
+    @FXML // fx:id="newLanguage_field"
+    private TextField newLanguage_field; // Value injected by FXMLLoader
+
+    @FXML // fx:id="newYear_field"
+    private TextField newYear_field; // Value injected by FXMLLoader
+
+    @FXML // fx:id="newPage_field"
+    private TextField newPage_field; // Value injected by FXMLLoader
 
 
-
-    @FXML // This method is called by the FXMLLoader when initialization is complete
+    @FXML
+        // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
 
         addButton.setOnAction(actionEvent -> {
@@ -211,13 +222,57 @@ public class HomeController {
     private void editBook() {
         DataBaseHandler dbHandler = new DataBaseHandler();
         Book book = new Book();
-        if(Check.isString(newAuthorName_field.getText().trim())&& newAuthorName_field.getText() == null) {
+        Book bookTemp = new Book();
+        ArrayList<Book> arrayList = dbHandler.getBookDB();
 
+
+        if (Check.isString(oldBookName_field.getText().trim())) {
+            String old = oldBookName_field.getText().trim();
+
+            for(int i = 0; i < arrayList.size(); i++){
+                if(old.equals(arrayList.get(i).getNameBook())){
+                    bookTemp = arrayList.get(i);
+                    break;
+                }
+            }
+
+            if (Check.isString(newAuthorName_field.getText().trim())) {
+                book.setAuthorBook(newAuthorName_field.getText().trim());
+            } else {
+                book.setAuthorBook(bookTemp.getAuthorBook());
+            }
+
+            if(Check.isString(newBookName_field.getText().trim())){
+                book.setNameBook(newBookName_field.getText().trim());
+            } else {
+                book.setNameBook(bookTemp.getNameBook());
+            }
+
+            if(Check.isString(newLanguage_field.getText().trim())){
+                book.setLanguage(newLanguage_field.getText().trim());
+            } else {
+                book.setLanguage(bookTemp.getLanguage());
+            }
+
+            if(Check.isNumber(newYear_field.getText().trim())){
+                book.setYearBook(Check.getNumber(newYear_field.getText().trim()));
+            } else {
+                book.setYearBook(bookTemp.getYearBook());
+            }
+
+            if(Check.isNumber(newPage_field.getText().trim())){
+                book.setCountPage(Check.getNumber(newPage_field.getText().trim()));
+            } else {
+                book.setCountPage(bookTemp.getCountPage());
+            }
+
+            dbHandler.editBookDB(old, book);
+
+        } else {
+            Shake shake = new Shake(oldBookName_field);
+            shake.playAnim();
         }
 
 
-
-
-        dbHandler.editBookDB(newBookName_field.getText().trim(), oldBookName_field.getText().trim(),newAuthorName_field.getText().trim());
     }
 }

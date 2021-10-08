@@ -11,6 +11,13 @@ public class Check {
         return !number.equals("") && number != null && number.matches("\\d+?");
     }
 
+
+    public static int getNumber(String number) {
+        if (Check.isNumber(number))
+            return Integer.parseInt(number);
+        return 0;
+    }
+
     public static boolean isString(String str) {
         return !str.equals("") && str != null;
     }
