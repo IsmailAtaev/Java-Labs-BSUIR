@@ -5,7 +5,6 @@ package com.example.lab5;
  */
 
 import java.net.URL;
-import java.security.spec.RSAOtherPrimeInfo;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import com.example.lab5.animations.Shake;
@@ -28,95 +27,97 @@ public class HomeController {
     private URL location;
 
     @FXML // fx:id="allTabPane"
-    private TabPane allTabPane; // Value injected by FXMLLoader
+    private TabPane allTabPane;
 
     @FXML // fx:id="addBookIcon"
-    private Tab addBookIcon; // Value injected by FXMLLoader
+    private Tab addBookIcon;
 
     @FXML // fx:id="addBookPane"
-    private AnchorPane addBookPane; // Value injected by FXMLLoader
+    private AnchorPane addBookPane;
 
     @FXML // fx:id="addButton"
-    private Button addButton; // Value injected by FXMLLoader
+    private Button addButton;
 
     @FXML // fx:id="author_filed"
-    private TextField author_filed; // Value injected by FXMLLoader
+    private TextField author_filed;
 
     @FXML // fx:id="nameBook_field"
-    private TextField nameBook_field; // Value injected by FXMLLoader
+    private TextField nameBook_field;
 
     @FXML // fx:id="language_field"
-    private TextField language_field; // Value injected by FXMLLoader
+    private TextField language_field;
 
     @FXML // fx:id="year_field"
-    private TextField year_field; // Value injected by FXMLLoader
+    private TextField year_field;
 
     @FXML // fx:id="page_field"
-    private TextField page_field; // Value injected by FXMLLoader
+    private TextField page_field;
 
     @FXML // fx:id="searchBookIcon"
-    private Tab searchBookIcon; // Value injected by FXMLLoader
+    private Tab searchBookIcon;
 
     @FXML // fx:id="searchBook"
-    private AnchorPane searchBook; // Value injected by FXMLLoader
+    private AnchorPane searchBook;
 
     @FXML // fx:id="searchButton"
-    private Button searchButton; // Value injected by FXMLLoader
+    private Button searchButton;
 
     @FXML // fx:id="authorSearch_field"
-    private TextField authorSearch_field; // Value injected by FXMLLoader
+    private TextField authorSearch_field;
 
     @FXML // fx:id="nameBookSearch_field"
-    private TextField nameBookSearch_field; // Value injected by FXMLLoader
-
-    @FXML // fx:id="N"
-    private TableColumn<Integer, Integer> N; // Value injected by FXMLLoader
+    private TextField nameBookSearch_field;
 
     @FXML // fx:id="authorList"
-    private TableColumn<Book, String> authorBook; // Value injected by FXMLLoader
+    private TableColumn<Book, String> authorBook;
 
     @FXML // fx:id="nameList"
-    private TableColumn<Book, String> nameBook; // Value injected by FXMLLoader
+    private TableColumn<Book, String> nameBook;
 
     @FXML // fx:id="languageList"
-    private TableColumn<Book, String> language; // Value injected by FXMLLoader
+    private TableColumn<Book, String> language;
 
     @FXML // fx:id="yearList"
-    private TableColumn<Book, Integer> yearBook; // Value injected by FXMLLoader
+    private TableColumn<Book, Integer> yearBook;
 
     @FXML // fx:id="pageList"
-    private TableColumn<Book, Integer> countPage; // Value injected by FXMLLoader
+    private TableColumn<Book, Integer> countPage;
 
     @FXML // fx:id="xButton"
-    private Button xButton; // Value injected by FXMLLoader
+    private Button xButton;
 
     @FXML // fx:id="tabViewBook"
-    private TableView<Book> tabViewBook = new TableView<Book>(); // Value injected by FXMLLoader
+    private TableView<Book> tabViewBook = new TableView<Book>();
 
     @FXML // fx:id="viewBooks"
-    private Button viewBooks; // Value injected by FXMLLoader
+    private Button viewBooks;
 
     @FXML // fx:id="editButton"
-    private Button editButton; // Value injected by FXMLLoader
+    private Button editButton;
 
     @FXML // fx:id="oldBookName_field"
-    private TextField oldBookName_field; // Value injected by FXMLLoader
+    private TextField oldBookName_field;
 
     @FXML // fx:id="newAuthorName_field"
-    private TextField newAuthorName_field; // Value injected by FXMLLoader
+    private TextField newAuthorName_field;
 
     @FXML // fx:id="newBookName_field"
-    private TextField newBookName_field; // Value injected by FXMLLoader
+    private TextField newBookName_field;
 
     @FXML // fx:id="newLanguage_field"
-    private TextField newLanguage_field; // Value injected by FXMLLoader
+    private TextField newLanguage_field;
 
     @FXML // fx:id="newYear_field"
-    private TextField newYear_field; // Value injected by FXMLLoader
+    private TextField newYear_field;
 
     @FXML // fx:id="newPage_field"
-    private TextField newPage_field; // Value injected by FXMLLoader
+    private TextField newPage_field;
 
+    @FXML // fx:id="deleteButton"
+    private Button deleteButton;
+
+    @FXML // fx:id="delete_field"
+    private TextField delete_field;
 
     @FXML
         // This method is called by the FXMLLoader when initialization is complete
@@ -138,6 +139,10 @@ public class HomeController {
             editBook();
         });
 
+        deleteButton.setOnAction(actionEvent -> {
+            deleteBook();
+        });
+
     }
 
     private void addBook() {
@@ -146,8 +151,7 @@ public class HomeController {
         Book book = new Book();
 
         if (Check.isString(author_filed.getText().trim()) && Check.isString(nameBook_field.getText().trim()) &&
-                Check.isString(language_field.getText().trim()) && Check.isNumber(year_field.getText().trim()) &&
-                Check.isNumber(page_field.getText().trim())) {
+                Check.isString(language_field.getText().trim()) && Check.isNumber(year_field.getText().trim()) && Check.isNumber(page_field.getText().trim())) {
 
             book.setAuthorBook(author_filed.getText().trim());
             book.setNameBook(nameBook_field.getText().trim());
@@ -182,55 +186,23 @@ public class HomeController {
             tabViewBook.getColumns().get(2).setCellValueFactory(new PropertyValueFactory("language"));
             tabViewBook.getColumns().get(3).setCellValueFactory(new PropertyValueFactory("yearBook"));
             tabViewBook.getColumns().get(4).setCellValueFactory(new PropertyValueFactory("countPage"));
-
-            // authorBook = new TableColumn<Book, String>("Author");
-            // authorBook  = new TableColumn<Book, String>("Author");
-            //authorBook.setCellValueFactory(new PropertyValueFactory<Book, String>("authorBook"));
-
-            /*
-            tabViewBook.getColumns().stream().filter(x -> x.getText() == "Author").findFirst().get().setCellValueFactory(new PropertyValueFactory("authorBook"));
-            tabViewBook.getColumns().stream().filter(x -> x.getText() == "Name").findFirst().get().setCellValueFactory(new PropertyValueFactory("nameBook"));
-            tabViewBook.getColumns().stream().filter(x -> x.getText() == "Language").findFirst().get().setCellValueFactory(new PropertyValueFactory("language"));
-            tabViewBook.getColumns().stream().filter(x -> x.getText() == "Year").findFirst().get().setCellValueFactory(new PropertyValueFactory("yearBook"));
-            tabViewBook.getColumns().stream().filter(x -> x.getText() == "page").findFirst().get().setCellValueFactory(new PropertyValueFactory("countPage"));
-            */
-
-            /* authorBook.setCellValueFactory(new PropertyValueFactory<Book, String>("authorBook"));
-             nameBook.setCellValueFactory(new PropertyValueFactory<Book,String>("nameBook"));
-             language.setCellValueFactory(new PropertyValueFactory<Book,String>("language"));
-             yearBook.setCellValueFactory(new PropertyValueFactory<Book,Integer>("yearBook"));
-             countPage.setCellValueFactory(new PropertyValueFactory<Book,Integer>("countPage"));
-
-             tabViewBook.getColumns().addAll(authorBook,nameBook,language,yearBook,countPage);
-             tabViewBook.setItems(bookObservableLis);
-            /*  Book book = new Book();
-
-            for(Field book1 : book.getClass().getDeclaredFields()) {
-                System.out.println(book1.getName());
-            }
-
-
-             authorList = new TableColumn<Book, String>("Author");
-             authorList.setCellValueFactory(celldata -> new ObservableValue<String>() { });
-             tabViewBook.getColumns().add(authorList);*/
-
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
     private void editBook() {
+
         DataBaseHandler dbHandler = new DataBaseHandler();
+        ArrayList<Book> arrayList = dbHandler.getBookDB();
         Book book = new Book();
         Book bookTemp = new Book();
-        ArrayList<Book> arrayList = dbHandler.getBookDB();
-
 
         if (Check.isString(oldBookName_field.getText().trim())) {
             String old = oldBookName_field.getText().trim();
 
-            for(int i = 0; i < arrayList.size(); i++){
-                if(old.equals(arrayList.get(i).getNameBook())){
+            for (int i = 0; i < arrayList.size(); i++) {
+                if (old.equals(arrayList.get(i).getNameBook())) {
                     bookTemp = arrayList.get(i);
                     break;
                 }
@@ -242,25 +214,25 @@ public class HomeController {
                 book.setAuthorBook(bookTemp.getAuthorBook());
             }
 
-            if(Check.isString(newBookName_field.getText().trim())){
+            if (Check.isString(newBookName_field.getText().trim())) {
                 book.setNameBook(newBookName_field.getText().trim());
             } else {
                 book.setNameBook(bookTemp.getNameBook());
             }
 
-            if(Check.isString(newLanguage_field.getText().trim())){
+            if (Check.isString(newLanguage_field.getText().trim())) {
                 book.setLanguage(newLanguage_field.getText().trim());
             } else {
                 book.setLanguage(bookTemp.getLanguage());
             }
 
-            if(Check.isNumber(newYear_field.getText().trim())){
+            if (Check.isNumber(newYear_field.getText().trim())) {
                 book.setYearBook(Check.getNumber(newYear_field.getText().trim()));
             } else {
                 book.setYearBook(bookTemp.getYearBook());
             }
 
-            if(Check.isNumber(newPage_field.getText().trim())){
+            if (Check.isNumber(newPage_field.getText().trim())) {
                 book.setCountPage(Check.getNumber(newPage_field.getText().trim()));
             } else {
                 book.setCountPage(bookTemp.getCountPage());
@@ -272,7 +244,17 @@ public class HomeController {
             Shake shake = new Shake(oldBookName_field);
             shake.playAnim();
         }
-
-
     }
+
+    private void deleteBook() {
+        if (Check.isString(delete_field.getText().trim())) {
+            DataBaseHandler dataBaseHandler = new DataBaseHandler();
+            dataBaseHandler.deleteDB(delete_field.getText().trim());
+        } else {
+            Shake shakeDelete = new Shake(delete_field);
+            shakeDelete.playAnim();
+        }
+    }
+
+
 }

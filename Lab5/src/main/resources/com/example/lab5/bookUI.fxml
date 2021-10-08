@@ -33,7 +33,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #fff;">
                      <children>
-                        <TableView fx:id="tabViewBook" layoutY="49.0" prefHeight="431.0" prefWidth="646.0" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="107.80000000000001">
+                        <TableView fx:id="tabViewBook" layoutY="52.0" prefHeight="426.0" prefWidth="850.0" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="52.0">
                            <columns>
                               <TableColumn fx:id="authorBook" prefWidth="163.99999392032623" text="Author" />
                               <TableColumn fx:id="nameBook" prefWidth="165.60000610351562" text="Name" />
@@ -42,9 +42,7 @@
                               <TableColumn fx:id="countPage" prefWidth="112.79998779296875" text="page" />
                            </columns>
                         </TableView>
-                        <Button fx:id="viewBooks" layoutX="282.0" layoutY="70.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="view books" AnchorPane.leftAnchor="282.0" AnchorPane.rightAnchor="263.6" />
-                        <Button fx:id="searchButton1" layoutX="27.0" layoutY="22.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Search" AnchorPane.leftAnchor="27.0" />
-                        <TextField layoutX="160.0" layoutY="22.0" prefHeight="30.0" prefWidth="400.0" promptText="Name book" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="85.60000000000002" />
+                        <Button fx:id="viewBooks" layoutX="265.0" layoutY="14.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="view books" AnchorPane.leftAnchor="265.0" AnchorPane.rightAnchor="280.6" />
                      </children>
                   </AnchorPane>
               </content>
@@ -53,7 +51,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="495.0" prefWidth="717.0" style="-fx-background-color: fff;">
                      <children>
-                        <Button fx:id="editButton" layoutX="341.0" layoutY="91.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" text="Edit" />
+                        <Button fx:id="editButton" layoutX="341.0" layoutY="91.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" text="Edit" AnchorPane.leftAnchor="341.0" AnchorPane.rightAnchor="399.0" />
                         <TextField fx:id="oldBookName_field" layoutX="105.0" layoutY="28.0" prefHeight="30.0" prefWidth="640.0" promptText="                                    Which book do you want to change, Enter the name book" style="-fx-background-color: #BF1F1F;" AnchorPane.leftAnchor="105.0" AnchorPane.rightAnchor="106.0">
                            <opaqueInsets>
                               <Insets />
@@ -62,11 +60,21 @@
                               <Font size="13.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="newAuthorName_field" layoutX="99.0" layoutY="153.0" prefHeight="30.0" prefWidth="640.0" promptText="New  Author name" />
-                        <TextField fx:id="newBookName_field" layoutX="99.0" layoutY="222.0" prefHeight="30.0" prefWidth="640.0" promptText="New  Book name" />
-                        <TextField fx:id="newLanguage_field" layoutX="99.0" layoutY="284.0" prefHeight="30.0" prefWidth="640.0" promptText="New  Language" />
-                        <TextField fx:id="newYear_field" layoutX="99.0" layoutY="340.0" prefHeight="30.0" prefWidth="640.0" promptText="New  Year " />
-                        <TextField fx:id="newPage_field" layoutX="99.0" layoutY="391.0" prefHeight="30.0" prefWidth="640.0" promptText="New  Count page " />
+                        <TextField fx:id="newAuthorName_field" layoutX="99.0" layoutY="153.0" prefHeight="30.0" prefWidth="640.0" promptText="New  Author name" AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="111.39999999999998" />
+                        <TextField fx:id="newBookName_field" layoutX="99.0" layoutY="222.0" prefHeight="30.0" prefWidth="640.0" promptText="New  Book name" AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="111.39999999999998" />
+                        <TextField fx:id="newLanguage_field" layoutX="99.0" layoutY="284.0" prefHeight="30.0" prefWidth="640.0" promptText="New  Language" AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="111.39999999999998" />
+                        <TextField fx:id="newYear_field" layoutX="99.0" layoutY="340.0" prefHeight="30.0" prefWidth="640.0" promptText="New  Year " AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="111.39999999999998" />
+                        <TextField fx:id="newPage_field" layoutX="99.0" layoutY="391.0" prefHeight="30.0" prefWidth="640.0" promptText="New  Count page " AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="111.39999999999998" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Delete">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+                     <children>
+                        <Button fx:id="deleteButton" layoutX="294.0" layoutY="71.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="206.0" text="Delete" AnchorPane.leftAnchor="294.0" />
+                        <TextField fx:id="delete_field" layoutX="133.0" layoutY="137.0" prefHeight="31.0" prefWidth="527.0" promptText="Enter Name book" AnchorPane.leftAnchor="133.0" AnchorPane.rightAnchor="190.19999999999993" />
                      </children>
                   </AnchorPane>
               </content>

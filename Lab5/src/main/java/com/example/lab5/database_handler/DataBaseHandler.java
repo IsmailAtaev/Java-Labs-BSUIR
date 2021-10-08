@@ -19,21 +19,27 @@ public class DataBaseHandler extends Configs {
         return dbConnection;
     }
 
-    public void editBookDB(String oldNameBook,Book book) {
-        try{
-            String update = "UPDATE " + Const.BOOKS_TABLE + " SET " + Const.BOOKS_AUTHOR + "=?, " + Const.BOOKS_NAME + "=? " +" WHERE " + Const.BOOKS_NAME + "=?";
-            PreparedStatement preparedStatement =  getDbConnection().prepareStatement(update);
+    public void editBookDB(String oldNameBook, Book book) {
+        try {
+            String update = "UPDATE " + Const.BOOKS_TABLE +
+                    " SET " + Const.BOOKS_AUTHOR + "=?, " + Const.BOOKS_NAME + "=?, " + Const.BOOKS_LANGUAGE + "=?, " + Const.BOOKS_YEAR + "=?, " + Const.BOOKS_COUNTPAGE + "=? " +
+                    " WHERE " + Const.BOOKS_NAME + "=?";
 
-            preparedStatement.setString(1,book.getAuthorBook());
-            preparedStatement.setString(2,book.getNameBook());
-            preparedStatement.setString(3,oldNameBook);
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(update);
+
+            preparedStatement.setString(1, book.getAuthorBook());
+            preparedStatement.setString(2, book.getNameBook());
+            preparedStatement.setString(3, book.getLanguage());
+            preparedStatement.setInt(4, book.getYearBook());
+            preparedStatement.setInt(5, book.getCountPage());
+            preparedStatement.setString(6, oldNameBook);
+
             preparedStatement.executeUpdate();
 
-        }catch (SQLException | ClassNotFoundException sqlException){
+        } catch (SQLException | ClassNotFoundException sqlException) {
 
         }
     }
-
 
     public void addBookDB(Book book) {
         String insert = "INSERT INTO " + Const.BOOKS_TABLE + "(" +
@@ -80,5 +86,18 @@ public class DataBaseHandler extends Configs {
         }
         return arrayList;
     }
+
+    public void deleteDB(String deleteValue) {
+        try {
+            String DELETE = "DELETE FROM " + Const.BOOKS_TABLE + " WHERE " + Const.BOOKS_NAME + "='" + deleteValue + "'; ";
+            PreparedStatement preparedStatementDelete = getDbConnection().prepareStatement(DELETE);
+            preparedStatementDelete.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
