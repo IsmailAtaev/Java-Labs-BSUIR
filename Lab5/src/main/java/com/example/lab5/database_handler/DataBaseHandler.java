@@ -1,16 +1,29 @@
 package com.example.lab5.database_handler;
+
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.logging.Logger;
-
 import com.example.lab5.book.Book;
 import com.example.lab5.configs.Configs;
 import com.example.lab5.configs.Const;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+/**
+ * @author Ataev Ismayyl
+ * бизнес логика отделена от хранения объектов, по всей возможности сделал
+ * */
 
 public class DataBaseHandler extends Configs {
 
+    private final Logger logger = LogManager.getLogger(DataBaseHandler.class.getName());
+
     Connection dbConnection;
+
+    /**
+     * @throws ClassNotFoundException,SQLException
+     * @return  Connection
+     * */
 
     public Connection getDbConnection() throws ClassNotFoundException, SQLException {
         String connectionString = "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName;
@@ -36,8 +49,10 @@ public class DataBaseHandler extends Configs {
 
             preparedStatement.executeUpdate();
 
-        } catch (SQLException | ClassNotFoundException sqlException) {
-
+        } catch (SQLException sqlException) {
+            logger.log(Level.ERROR, sqlException.getMessage());
+        } catch (ClassNotFoundException e) {
+            logger.log(Level.ERROR, e.getMessage());
         }
     }
 
@@ -56,9 +71,9 @@ public class DataBaseHandler extends Configs {
             prSt.setString(5, String.valueOf(book.getCountPage()));
             prSt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.log(Level.ERROR, e.getMessage());
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            logger.log(Level.ERROR, e.getMessage());
         }
     }
 
@@ -80,9 +95,9 @@ public class DataBaseHandler extends Configs {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.log(Level.ERROR, e.getMessage());
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            logger.log(Level.ERROR, e.getMessage());
         }
         return arrayList;
     }
@@ -93,9 +108,9 @@ public class DataBaseHandler extends Configs {
             PreparedStatement preparedStatementDelete = getDbConnection().prepareStatement(DELETE);
             preparedStatementDelete.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.log(Level.ERROR, e.getMessage());
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            logger.log(Level.ERROR, e.getMessage());
         }
     }
 

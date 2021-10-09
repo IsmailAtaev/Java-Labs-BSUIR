@@ -2,7 +2,18 @@ package com.example.lab5.book;
 
 import java.util.Objects;
 
+/**
+ * @author Ataev Ismayyl
+ * */
+
+import org.apache.logging.log4j.Level; // почему-то не видит, и в pom.xml добавил, и в модуль
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class Book {
+    private final Logger logger = LogManager.getLogger(Book.class.getName());
 
     private String authorBook;
 
@@ -14,7 +25,6 @@ public class Book {
 
     private int countPage = 0;
 
-
     public Book(String authorBook, String nameBook, String language, int yearBook, int countPage) {
         this.authorBook = authorBook;
         this.nameBook = nameBook;
@@ -23,9 +33,7 @@ public class Book {
         this.countPage = countPage;
     }
 
-    public Book() {
-
-    }
+    public Book() { }
 
     public Book(String authorBook) {
         this.authorBook = authorBook;
@@ -70,7 +78,6 @@ public class Book {
     public void setCountPage(int countPage) {
         this.countPage = countPage;
     }
-
 
     @Override
     public boolean equals(Object o) {
