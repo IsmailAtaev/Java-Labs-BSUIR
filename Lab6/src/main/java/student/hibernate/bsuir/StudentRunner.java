@@ -11,7 +11,7 @@ public class StudentRunner {
     private static SessionFactory sessionFactory;
 
     public static void main(String[] args) {
-        sessionFactory = new Configuration().configure().buildSessionFactory();
+        sessionFactory = new Configuration().configure().   buildSessionFactory();
 
         StudentRunner studentRunner = new StudentRunner();
 
