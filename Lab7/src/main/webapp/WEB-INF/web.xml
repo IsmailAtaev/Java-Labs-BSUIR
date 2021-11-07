@@ -6,7 +6,7 @@
 
     <servlet>
         <servlet-name>GetStartPageServlet</servlet-name>
-        <servlet-class>ru.javavision.servlet.GetIndexPageServlet</servlet-class>
+        <servlet-class>com.ataew.servlet.GetIndexPageServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
