@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.book.model.Book" table="book">
+        <meta attribute="class-description">
+            This class contains book's details.
+        </meta>
+        <id name="id" type="int" column="ID">
+            <generator class="native"/>
+        </id>
+        <property name="authorBook" column="AUTHOR" type="string"/>
+        <property name="nameBook" column="NAME" type="string"/>
+        <property name="language" column="LANGUAGE" type="string"/>
+        <property name="yearBook" column="YEAR" type="int"/>
+        <property name="countPage" column="PAGE" type="int"/>
+    </class>
+</hibernate-mapping>
