@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Lab8.iml" filepath="$PROJECT_DIR$/Lab8.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dialog.iml" filepath="$PROJECT_DIR$/dialog.iml" />
     </modules>
   </component>
 </project>

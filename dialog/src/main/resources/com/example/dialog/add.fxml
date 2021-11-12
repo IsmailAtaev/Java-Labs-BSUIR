@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dialog.idController">
+   <children>
+      <TextField fx:id="id" layoutX="318.0" layoutY="154.0" promptText="id" />
+      <Button fx:id="idBtn" layoutX="160.0" layoutY="167.0" mnemonicParsing="false" onAction="#getId" text="Button" />
+      <Button fx:id="c" layoutX="232.0" layoutY="252.0" mnemonicParsing="false" onAction="#clos" prefHeight="26.0" prefWidth="112.0" text="c" />
+   </children>
+</AnchorPane>
